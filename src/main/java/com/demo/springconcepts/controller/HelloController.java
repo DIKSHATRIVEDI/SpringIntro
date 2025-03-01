@@ -23,9 +23,17 @@ public class HelloController {
         return "Hello " + name + " from BridgeLabz!";
     }
 
+    // POST request using a User object
     @RequestMapping(value = "/post", method = RequestMethod.POST) // http://localhost:8080/post
     public String postController(@RequestBody User user) {
         return "Hello " + user.getFirstName() + " " + user.getLastName() + " from BridgeLabz!";
+    }
+
+    // **PUT Request: Path Variable (firstName) + Query Parameter (lastName)**
+    @PutMapping("/put/{firstName}")  // http://localhost:8080/put/Diksha?lastName=Trivedi
+    public String putController(@PathVariable String firstName,
+                                @RequestParam(name = "lastName", required = true) String lastName) {
+        return "Hello " + firstName + " " + lastName + " from BridgeLabz!";
     }
 
 }
