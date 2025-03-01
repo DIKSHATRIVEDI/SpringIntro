@@ -1,10 +1,7 @@
 package com.demo.springconcepts.controller;
 
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.bind.annotation.PathVariable;
+import com.demo.springconcepts.controller.dto.User;
+import org.springframework.web.bind.annotation.*;
 
 @RestController //http://localhost:8080/hello
 public class HelloController {
@@ -24,6 +21,11 @@ public class HelloController {
     @RequestMapping(value = "/param/{name}") // http://localhost:8080/param/Diksha?name=Diksha
     public String pathVariableController(@PathVariable String name) {
         return "Hello " + name + " from BridgeLabz!";
+    }
+
+    @RequestMapping(value = "/post", method = RequestMethod.POST) // http://localhost:8080/post
+    public String postController(@RequestBody User user) {
+        return "Hello " + user.getFirstName() + " " + user.getLastName() + " from BridgeLabz!";
     }
 
 }
